@@ -9,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AdicionarTransacaoComponent {
 
+  // EVENT BINDING
+  public transacaoAdicionada!: string;
+
+  public adicionarTransacao() {
+    return this.transacaoAdicionada = 'Transação adicionada com sucesso!';
+  }
 }
