@@ -21,4 +21,7 @@ export class ListarTransacoesComponent {
     return this.receitas - this.despesas
   }
 
+    // PROPERTY BINDING
+    public valorSaldo = 'saldo-positivo';
+    
 }

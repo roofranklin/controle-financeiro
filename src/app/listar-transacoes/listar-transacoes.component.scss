@@ -10,4 +10,14 @@
             text-align: center;
         }
     }
+    main {
+        .saldo-positivo {
+            color: white;
+            background-color: green;
+        }
+        .saldo-negativo {
+            color: white;
+            background-color: red;
+        }
+    }
 }
