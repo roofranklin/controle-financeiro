@@ -15,13 +15,16 @@ export class ListarTransacoesComponent {
 
   // INTERPOLAÇÃO USANDO RETORNO DE UMA FUNÇÃO
   public receitas = 2000;
-  public despesas = 500;
+  public despesas = 2000;
 
   public saldo() {
     return this.receitas - this.despesas
   }
 
-    // PROPERTY BINDING
-    public valorSaldo = 'saldo-positivo';
-    
+  // PROPERTY BINDING
+  public tipoSaldo() {
+    let diferenca = this.receitas - this.despesas;
+    let classSaldo = diferenca >= 0 ? 'saldo-positivo' : 'saldo-negativo';
+    return classSaldo;
+  }   
 }
