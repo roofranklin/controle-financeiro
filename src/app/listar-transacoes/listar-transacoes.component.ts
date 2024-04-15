@@ -15,12 +15,17 @@ import { EmailPipe } from '../email.pipe';
 export class ListarTransacoesComponent {
   // INTERPOLAÇÃO DE VARIAVEIS
   public nome = 'Roosevelt'; 
+  public sobrenome = 'Santos';
+
+  public boasVindas() {
+    return `Olá ${this.nome} ${this.sobrenome}, seja bem vindo!`;
+  }
+
   public titulo = 'Controle Financeiro';
-  public boasVindas = 'Olá ' + this.nome + ', Bem vindo(a) ao nosso sistema!';
 
   // INTERPOLAÇÃO USANDO RETORNO DE UMA FUNÇÃO
-  public receitas = 4125.32;
-  public despesas = 349.50;
+  public receitas = 2122.64;
+  public despesas = 1025.12;
 
   public saldo() {
     return this.receitas - this.despesas
@@ -28,12 +33,11 @@ export class ListarTransacoesComponent {
 
   // PROPERTY BINDING
   public tipoSaldo() {
-    let diferenca = this.receitas - this.despesas;
-    let classSaldo = diferenca >= 0 ? 'saldo-positivo' : 'saldo-negativo';
+    let classSaldo = this.saldo() >= 0 ? 'saldo-positivo' : 'saldo-negativo';
     return classSaldo;
   }   
 
   // TREINANDO PIPE
   public date = new Date();
-  public usuario = 'roosevelt.santos';
+  public usuario = 'joao.silva';
 }

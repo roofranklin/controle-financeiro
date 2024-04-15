@@ -4,7 +4,7 @@
         <p>{{ date | data: 'dd/MM/yyyy HH:mm' }}</p>
     </header>
     <main>
-        <p class="boas-vindas">{{ boasVindas | lowercase }}</p>
+        <p class="boas-vindas">{{ boasVindas() }}</p>
         <p>{{ usuario | email }}</p>
         <h2>Lista de Transações</h2>
         <a routerLink="/adicionar">Adicionar Transação</a>

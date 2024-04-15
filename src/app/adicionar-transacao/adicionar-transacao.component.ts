@@ -3,8 +3,8 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-adicionar-transacao',
-  standalone: true,
   imports: [ FormsModule ],
+  standalone: true,
   templateUrl: './adicionar-transacao.component.html',
   styleUrl: './adicionar-transacao.component.scss'
 })
@@ -17,7 +17,5 @@ export class AdicionarTransacaoComponent {
   }
 
   // 2WAY BINDING
-  public nomeCompleto!: string;
-  public endereco!: string;
-
+  public valorTransacao!: number;
 }
