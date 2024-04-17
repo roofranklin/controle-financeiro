@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgStyle, NgIf } from '@angular/common';
+
 import { CurrencyPipe } from '../currency.pipe';
 import { UppercasePipe } from '../uppercase.pipe';
 import { LowercasePipe } from '../lowercase.pipe';
@@ -8,7 +10,16 @@ import { EmailPipe } from '../email.pipe';
 @Component({
   selector: 'app-listar-transacoes',
   standalone: true,
-  imports: [ CurrencyPipe, UppercasePipe, LowercasePipe, DataPipe, EmailPipe ],
+  imports: 
+    [ 
+      CurrencyPipe,
+      UppercasePipe,
+      LowercasePipe,
+      DataPipe,
+      EmailPipe,
+      NgStyle,
+      NgIf
+    ],
   templateUrl: './listar-transacoes.component.html',
   styleUrl: './listar-transacoes.component.scss'
 })
@@ -40,4 +51,13 @@ export class ListarTransacoesComponent {
   // TREINANDO PIPE
   public date = new Date();
   public usuario = 'joao.silva';
+
+  // TESTANDO DIRETIVA DE ATRIBUTO
+  public nomeTransacao = 'Pagamento aluguel';
+  public tipoTransacao = 'despesa';
+  public valorTransacao = 2000;
+  public dataTransacao = new Date();
+
+  // LISTA DE TRANSAÇÕES
+  public transacoes = [];
 }

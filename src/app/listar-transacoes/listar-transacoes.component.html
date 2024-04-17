@@ -10,15 +10,29 @@
         <a routerLink="/adicionar">Adicionar Transação</a>
 
         <p [class]="tipoSaldo()"> Seu saldo atual é de: {{ saldo() | currency }}</p>
-        <table>
+        <!-- TESTANDO DIRETIVA DE ATRIBUTO -->
+        <p [ngStyle]="{'background': saldo() >= 0 ? 'green' : 'red'}">{{ saldo() | currency }}</p>
+        
+        <table class="table">
             <thead>
-                <td>Cabeçalho da tabela</td>
+              <tr>
+                <th scope="col">Nome Transação</th>
+                <th scope="col">Tipo Transação</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Data</th>
+              </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Conteúdo da tabela</td>
-                </tr>
+              <tr [ngStyle]="{'background-color': tipoTransacao === 'despesa' ? '#FCA5A5' : '#7AB85C'}">
+                <td>{{ nomeTransacao }}</td>
+                <td>
+                    <span *ngIf="tipoTransacao === 'despesa'">😭 </span>
+                    {{ tipoTransacao }}
+                </td>
+                <td>{{ valorTransacao | currency }}</td>
+                <td>{{ dataTransacao | data: 'dd/MM/yyyy' }}</td>
+              </tr>
             </tbody>
-        </table>
+          </table>
     </main>
 </div>
