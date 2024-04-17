@@ -23,14 +23,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr [ngStyle]="{'background-color': tipoTransacao === 'despesa' ? '#FCA5A5' : '#7AB85C'}">
-                <td>{{ nomeTransacao }}</td>
+              <tr *ngFor="let transacao of transacoes">
+                <td>{{ transacao.nome }}</td>
                 <td>
-                    <span *ngIf="tipoTransacao === 'despesa'">😭 </span>
-                    {{ tipoTransacao }}
+                  <span *ngIf="transacao.tipo === 'despesa'">😢 </span>
+                  {{ transacao.tipo }}
                 </td>
-                <td>{{ valorTransacao | currency }}</td>
-                <td>{{ dataTransacao | data: 'dd/MM/yyyy' }}</td>
+                <td [ngStyle]="{'color': transacao.tipo === 'despesa' ? 'red' : 'green'}">{{ transacao.valor | currency }}</td>
+                <td>{{ transacao.data | data: 'dd/MM/yyyy' }}</td>
               </tr>
             </tbody>
           </table>
