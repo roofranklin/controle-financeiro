@@ -56,39 +56,39 @@ export class ListarTransacoesComponent {
   // LISTA DE TRANSAÇÕES
   public transacoes = [
     {
-      'id': 1,
-      'nome': 'Recebimento de Salário',
-      'tipo': 'receita',
-      'valor': 8000,
-      'data': new Date()
+      "id": 1,
+      "descricao": "Recebimento de Salário",
+      "tipo": "receita",
+      "valor": 8000,
+      "data": new Date()
     },
     {
-      'id': 2,
-      'nome': 'Pagamento de Aluguel',
-      'tipo': 'despesa',
-      'valor': 2000,
-      'data': new Date()
+      "id": 2,
+      "descricao": "Pagamento de Aluguel",
+      "tipo": "despesa",
+      "valor": 2000,
+      "data": new Date()
     },
     {
-      'id': 3,
-      'nome': 'Conta de Luz',
-      'tipo': 'despesa',
-      'valor': 300,
-      'data': new Date()
+      "id": 3,
+      "descricao": "Conta de Luz",
+      "tipo": "despesa",
+      "valor": 150,
+      "data": new Date()
     },
     {
-      'id': 4,
-      'nome': 'Conta de Internet',
-      'tipo': 'despesa',
-      'valor': 120,
-      'data': new Date()
+      "id": 4,
+      "descricao": "Parcela do Carro",
+      "tipo": "despesa",
+      "valor": 1200,
+      "data": new Date()
     },
     {
-      'id': 5,
-      'nome': 'Recebimento de Horas Extras',
-      'tipo': 'receita',
-      'valor': 300,
-      'data': new Date()
+      "id": 5,
+      "descricao": "Pagamento da Comissão",
+      "tipo": "receita",
+      "valor": 900,
+      "data": new Date()
     }
   ];
 }

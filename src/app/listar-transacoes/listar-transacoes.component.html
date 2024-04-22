@@ -12,24 +12,28 @@
         <p [class]="tipoSaldo()"> Seu saldo atual é de: {{ saldo() | currency }}</p>
         <!-- TESTANDO DIRETIVA DE ATRIBUTO -->
         <p [ngStyle]="{'background': saldo() >= 0 ? 'green' : 'red'}">{{ saldo() | currency }}</p>
-        
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">Nome Transação</th>
-                <th scope="col">Tipo Transação</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Tipo</th>
                 <th scope="col">Valor</th>
                 <th scope="col">Data</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let transacao of transacoes">
-                <td>{{ transacao.nome }}</td>
+                <td>{{ transacao.descricao }}</td>
                 <td>
-                  <span *ngIf="transacao.tipo === 'despesa'">😢 </span>
+                  <span *ngIf="transacao.tipo === 'despesa' && transacao.valor < 1000">😢 </span>
+                  <span *ngIf="transacao.tipo === 'receita' && transacao.valor < 5000">😀 </span>
+                  <span *ngIf="transacao.tipo === 'receita' && transacao.valor >= 5000">😍 </span>
+                  <span *ngIf="transacao.tipo === 'despesa' && transacao.valor >= 1000">😡 </span>
                   {{ transacao.tipo }}
                 </td>
-                <td [ngStyle]="{'color': transacao.tipo === 'despesa' ? 'red' : 'green'}">{{ transacao.valor | currency }}</td>
+                <td [ngStyle]="{'color': transacao.tipo === 'despesa' ? 'red' : 'green'}">
+                  {{ transacao.valor | currency }}
+                </td>
                 <td>{{ transacao.data | data: 'dd/MM/yyyy' }}</td>
               </tr>
             </tbody>
