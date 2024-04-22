@@ -29,7 +29,18 @@
           </tr>
         </thead>
         <tbody>
-          @for (transacao of transacoes; track transacao.id) {
+          <tr *ngFor="let transacao of transacoes">
+            <td>{{ transacao.descricao }}</td>
+            <td>
+              <span *ngIf="transacao.tipo === 'despesa'">😢 </span>
+              <span *ngIf="transacao.tipo === 'receita'">🙂 </span>
+              {{ transacao.tipo }}
+            </td>
+            <td [ngStyle]="{'color': transacao.tipo === 'despesa' ? 'red' : 'green'}">{{ transacao.valor | currency }}</td>
+            <td>{{ transacao.data | data: 'dd/MM/yyyy' }}</td>
+          </tr>
+          <!-- TESTANDO CONTROL FLOW -->
+          <!-- @for (transacao of transacoes; track transacao.id) {
             <tr>
               <td>{{ transacao.descricao }}</td>
               <td>
@@ -52,7 +63,8 @@
               </td>
               <td>{{ transacao.data | data: 'dd/MM/yyyy' }}</td>
             </tr>
-          }
+          } -->
+
         </tbody>
       </table>
 </main>
