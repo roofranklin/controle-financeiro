@@ -29,20 +29,30 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let transacao of transacoes">
-            <td>{{ transacao.descricao }}</td>
-            <td>
-              <span *ngIf="transacao.tipo === 'despesa' && transacao.valor < 1000">😢 </span>
-              <span *ngIf="transacao.tipo === 'receita' && transacao.valor < 5000">😀 </span>
-              <span *ngIf="transacao.tipo === 'receita' && transacao.valor >= 5000">😍 </span>
-              <span *ngIf="transacao.tipo === 'despesa' && transacao.valor >= 1000">😡 </span>
-              {{ transacao.tipo }}
-            </td>
-            <td [ngStyle]="{'color': transacao.tipo === 'despesa' ? 'red' : 'green'}">
-              {{ transacao.valor | currency }}
-            </td>
-            <td>{{ transacao.data | data: 'dd/MM/yyyy' }}</td>
-          </tr>
+          @for (transacao of transacoes; track transacao.id) {
+            <tr>
+              <td>{{ transacao.descricao }}</td>
+              <td>
+                @if (transacao.tipo === 'despesa' && transacao.valor < 1000) {
+                  <span >😢 </span>
+                }
+                @if (transacao.tipo === 'despesa' && transacao.valor >= 1000) {
+                  <span>😡 </span>
+                }
+                @if (transacao.tipo === 'receita' && transacao.valor < 5000) {
+                  <span >😀 </span>
+                }
+                @else {
+                  <span >😍 </span>
+                }
+                {{ transacao.tipo }}
+              </td>
+              <td [ngStyle]="{'color': transacao.tipo === 'despesa' ? 'red' : 'green'}">
+                {{ transacao.valor | currency }}
+              </td>
+              <td>{{ transacao.data | data: 'dd/MM/yyyy' }}</td>
+            </tr>
+          }
         </tbody>
       </table>
 </main>

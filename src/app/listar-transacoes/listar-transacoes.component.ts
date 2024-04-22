@@ -30,6 +30,7 @@ export class ListarTransacoesComponent {
   // INTERPOLAÇÃO DE VARIAVEIS
   public nome = 'Roosevelt'; 
   public sobrenome = 'Santos';
+by: any;
 
   public boasVindas() {
     return `Olá ${this.nome} ${this.sobrenome}, seja bem vindo!`;
