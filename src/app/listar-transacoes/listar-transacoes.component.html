@@ -1,42 +1,49 @@
-<div class="container">
-    <header>
-        <h1>{{ titulo | uppercase }}</h1>
-        <p>{{ date | data: 'dd/MM/yyyy HH:mm' }}</p>
-    </header>
-    <main>
-        <p class="boas-vindas">{{ boasVindas() }}</p>
-        <p>{{ usuario | email }}</p>
-        <h2>Lista de Transações</h2>
-        <a routerLink="/adicionar">Adicionar Transação</a>
+<header>
+  <h1>{{ titulo | uppercase }}</h1>
+  <div class="usuario">{{ usuario | email }}</div>
+</header>
+<main class="container">
+    <h1 class="boas-vindas">{{ boasVindas() }}</h1>
 
-        <p [class]="tipoSaldo()"> Seu saldo atual é de: {{ saldo() | currency }}</p>
-        <!-- TESTANDO DIRETIVA DE ATRIBUTO -->
-        <p [ngStyle]="{'background': saldo() >= 0 ? 'green' : 'red'}">{{ saldo() | currency }}</p>
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Descrição</th>
-                <th scope="col">Tipo</th>
-                <th scope="col">Valor</th>
-                <th scope="col">Data</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let transacao of transacoes">
-                <td>{{ transacao.descricao }}</td>
-                <td>
-                  <span *ngIf="transacao.tipo === 'despesa' && transacao.valor < 1000">😢 </span>
-                  <span *ngIf="transacao.tipo === 'receita' && transacao.valor < 5000">😀 </span>
-                  <span *ngIf="transacao.tipo === 'receita' && transacao.valor >= 5000">😍 </span>
-                  <span *ngIf="transacao.tipo === 'despesa' && transacao.valor >= 1000">😡 </span>
-                  {{ transacao.tipo }}
-                </td>
-                <td [ngStyle]="{'color': transacao.tipo === 'despesa' ? 'red' : 'green'}">
-                  {{ transacao.valor | currency }}
-                </td>
-                <td>{{ transacao.data | data: 'dd/MM/yyyy' }}</td>
-              </tr>
-            </tbody>
-          </table>
-    </main>
-</div>
+   <div class="row">
+    <div [class]="'col-8 saldo ' + tipoSaldo()">
+      <p>Saldo em {{ date | data: 'dd/MM/yyyy HH:mm' }}: {{ saldo() | currency }}</p>
+    </div>
+    <div class="col-4">
+      <a class="btn btn-primary" routerLink="/adicionar">Adicionar Transação</a>
+    </div>
+   </div> 
+    
+    
+    <!-- TESTANDO DIRETIVA DE ATRIBUTO -->
+    <!-- <p [ngStyle]="{'background': saldo() >= 0 ? 'green' : 'red'}">{{ saldo() | currency }}</p> -->
+    
+    <h2>Lista de Transações</h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Descrição</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transacao of transacoes">
+            <td>{{ transacao.descricao }}</td>
+            <td>
+              <span *ngIf="transacao.tipo === 'despesa' && transacao.valor < 1000">😢 </span>
+              <span *ngIf="transacao.tipo === 'receita' && transacao.valor < 5000">😀 </span>
+              <span *ngIf="transacao.tipo === 'receita' && transacao.valor >= 5000">😍 </span>
+              <span *ngIf="transacao.tipo === 'despesa' && transacao.valor >= 1000">😡 </span>
+              {{ transacao.tipo }}
+            </td>
+            <td [ngStyle]="{'color': transacao.tipo === 'despesa' ? 'red' : 'green'}">
+              {{ transacao.valor | currency }}
+            </td>
+            <td>{{ transacao.data | data: 'dd/MM/yyyy' }}</td>
+          </tr>
+        </tbody>
+      </table>
+</main>
+

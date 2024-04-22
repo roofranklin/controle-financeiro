@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { NgStyle, NgIf, NgFor } from '@angular/common';
 
 import { CurrencyPipe } from '../currency.pipe';
@@ -19,7 +20,8 @@ import { EmailPipe } from '../email.pipe';
       EmailPipe,
       NgStyle,
       NgIf,
-      NgFor
+      NgFor,
+      RouterLink
     ],
   templateUrl: './listar-transacoes.component.html',
   styleUrl: './listar-transacoes.component.scss'
@@ -37,7 +39,7 @@ export class ListarTransacoesComponent {
 
   // INTERPOLAÇÃO USANDO RETORNO DE UMA FUNÇÃO
   public receitas = 2122.64;
-  public despesas = 1025.12;
+  public despesas = 3025.12;
 
   public saldo() {
     return this.receitas - this.despesas
@@ -51,7 +53,7 @@ export class ListarTransacoesComponent {
 
   // TREINANDO PIPE
   public date = new Date();
-  public usuario = 'joao.silva';
+  public usuario = 'roosevelt.santos';
 
   // LISTA DE TRANSAÇÕES
   public transacoes = [
