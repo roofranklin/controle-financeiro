@@ -1,0 +1,39 @@
+{
+    "lista-transacoes": [
+        {
+            "id": "47568765876",
+            "descricao": "Recebimento de Salário",
+            "tipo": "receita",
+            "valor": 12000,
+            "data": "2024-04-23 10:00:00"
+        },
+        {
+            "id": "76548937659486",
+            "descricao": "Pagamento de Aluguel",
+            "tipo": "despesa",
+            "valor": 2000,
+            "data": "2024-04-23 10:00:00"
+        },
+        {
+            "id": "876587657836",
+            "descricao": "Conta de Luz",
+            "tipo": "despesa",
+            "valor": 150,
+            "data": "2024-04-23 10:00:00"
+        },
+        {
+            "id": "598648956365",
+            "descricao": "Parcela do Carro",
+            "tipo": "despesa",
+            "valor": 1200,
+            "data": "2024-04-23 10:00:00"
+        },
+        {
+            "id": "756872356875263",
+            "descricao": "Pagamento da Comissão",
+            "tipo": "receita",
+            "valor": 900,
+            "data": "2024-04-23 10:00:00"
+        }
+    ]
+}

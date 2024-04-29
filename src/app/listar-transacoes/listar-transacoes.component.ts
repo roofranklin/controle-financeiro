@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgStyle, NgIf, NgFor } from '@angular/common';
+
+import { TransacaoService } from '../transacoes.service';
+import { Transacao } from '../transacoes';
 
 import { CurrencyPipe } from '../currency.pipe';
 import { UppercasePipe } from '../uppercase.pipe';
@@ -26,11 +29,26 @@ import { EmailPipe } from '../email.pipe';
   templateUrl: './listar-transacoes.component.html',
   styleUrl: './listar-transacoes.component.scss'
 })
-export class ListarTransacoesComponent {
+export class ListarTransacoesComponent implements OnInit {
+
+
+  // REQUISIÇÕES HTTP GET
+  transacoes: Transacao[] = [];
+
+  constructor(private transacaoService: TransacaoService) {}
+
+  ngOnInit(): void {
+    this.getTransacoes();
+  }
+
+  getTransacoes(): void {
+    this.transacaoService.getTransacoes()
+      .subscribe(transacoes => this.transacoes = transacoes);
+  }
+
   // INTERPOLAÇÃO DE VARIAVEIS
   public nome = 'Roosevelt'; 
   public sobrenome = 'Santos';
-by: any;
 
   public boasVindas() {
     return `Olá ${this.nome} ${this.sobrenome}, seja bem vindo!`;
@@ -56,42 +74,4 @@ by: any;
   public date = new Date();
   public usuario = 'roosevelt.santos';
 
-  // LISTA DE TRANSAÇÕES
-  public transacoes = [
-    {
-      "id": 1,
-      "descricao": "Recebimento de Salário",
-      "tipo": "receita",
-      "valor": 8000,
-      "data": new Date()
-    },
-    {
-      "id": 2,
-      "descricao": "Pagamento de Aluguel",
-      "tipo": "despesa",
-      "valor": 2000,
-      "data": new Date()
-    },
-    {
-      "id": 3,
-      "descricao": "Conta de Luz",
-      "tipo": "despesa",
-      "valor": 150,
-      "data": new Date()
-    },
-    {
-      "id": 4,
-      "descricao": "Parcela do Carro",
-      "tipo": "despesa",
-      "valor": 1200,
-      "data": new Date()
-    },
-    {
-      "id": 5,
-      "descricao": "Pagamento da Comissão",
-      "tipo": "receita",
-      "valor": 900,
-      "data": new Date()
-    }
-  ];
 }
