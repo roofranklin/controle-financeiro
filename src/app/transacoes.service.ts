@@ -16,4 +16,13 @@ export class TransacaoService {
     return this.http.get<Transacao[]>(this.baseUrl);
   }
 
+  adicionarTransacao(transacao: any): Observable<any> {
+    return this.http.post(this.baseUrl, transacao);
+  }
+
+  excluirTransacao(id: number): Observable<any> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete(url);
+  }
+
 }

@@ -46,6 +46,16 @@ export class ListarTransacoesComponent implements OnInit {
       .subscribe(transacoes => this.transacoes = transacoes);
   }
 
+  excluirTransacao(id: number): void {
+    this.transacaoService.excluirTransacao(id)
+    .subscribe(() => {
+      console.log('Transação excluída com sucesso!');
+      this.getTransacoes();
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
   // INTERPOLAÇÃO DE VARIAVEIS
   public nome = 'Roosevelt'; 
   public sobrenome = 'Santos';

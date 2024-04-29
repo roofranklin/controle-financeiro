@@ -30,14 +30,17 @@
         </thead>
         <tbody>
           <tr *ngFor="let transacao of transacoes">
-            <td>{{ transacao.descricao }}</td>
+            <td>{{ transacao.nome }}</td>
             <td>
               <span *ngIf="transacao.tipo === 'despesa'">😢 </span>
               <span *ngIf="transacao.tipo === 'receita'">🙂 </span>
               {{ transacao.tipo }}
             </td>
             <td [ngStyle]="{'color': transacao.tipo === 'despesa' ? 'red' : 'green'}">{{ transacao.valor | currency }}</td>
-            <td>{{ transacao.data | data: 'dd/MM/yyyy' }}</td>
+            <td>{{ transacao.data | data: 'dd/MM/yyyy HH:mm' }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="excluirTransacao(transacao.id)">Excluir</button>
+            </td>
           </tr>
           <!-- TESTANDO CONTROL FLOW -->
           <!-- @for (transacao of transacoes; track transacao.id) {

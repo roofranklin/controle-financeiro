@@ -1,6 +1,6 @@
 export interface Transacao {
     id: number;
-    descricao: string;
+    nome: string;
     tipo: string;
     valor: number;
     data: Date;
